@@ -1,0 +1,240 @@
+/* Google Font */
+@import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap');
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    background:#050505;
+    color:#00ff88;
+    font-family:'Share Tech Mono', monospace;
+    overflow-x:hidden;
+}
+
+/* Matrix Canvas */
+
+#matrix{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    z-index:-2;
+}
+
+/* Scanlines */
+
+body::after{
+    content:"";
+    position:fixed;
+    inset:0;
+    pointer-events:none;
+
+    background:
+    repeating-linear-gradient(
+        transparent 0px,
+        transparent 2px,
+        rgba(255,255,255,.03) 3px
+    );
+
+    animation:flicker .18s infinite;
+    z-index:-1;
+}
+
+@keyframes flicker{
+    0%{opacity:.08;}
+    50%{opacity:.12;}
+    100%{opacity:.06;}
+}
+
+.content{
+    width:min(1100px,92%);
+    margin:auto;
+    padding:100px 0;
+}
+
+h1{
+    font-size:4rem;
+    color:#00ff88;
+    text-shadow:
+        0 0 10px #00ff88,
+        0 0 20px #00ff88,
+        0 0 40px #00ff88;
+}
+
+h2{
+    margin-top:20px;
+    color:#33ffaa;
+}
+
+p{
+    margin-top:20px;
+    color:#b5ffd5;
+    line-height:1.8;
+    max-width:700px;
+}
+
+.button{
+    display:inline-block;
+    margin-top:35px;
+    padding:15px 35px;
+    border:2px solid #00ff88;
+    color:#00ff88;
+    text-decoration:none;
+    transition:.3s;
+    letter-spacing:2px;
+}
+
+.button:hover{
+    background:#00ff88;
+    color:black;
+    box-shadow:
+    0 0 15px #00ff88,
+    0 0 35px #00ff88;
+}
+
+/* Cards */
+
+.card{
+    margin-top:30px;
+    padding:25px;
+    border:1px solid #00ff88;
+    background:rgba(0,255,136,.05);
+    transition:.4s;
+}
+
+.card:hover{
+
+    transform:translateY(-6px);
+
+    box-shadow:
+    0 0 20px rgba(0,255,136,.4);
+
+    background:rgba(0,255,136,.09);
+
+}
+
+section{
+
+    margin-top:90px;
+
+}
+
+footer{
+
+    margin-top:120px;
+
+    opacity:.6;
+
+    text-align:center;
+
+}
+
+/* Glitch */
+
+.glitch{
+
+position:relative;
+
+display:inline-block;
+
+}
+
+.glitch::before,
+
+.glitch::after{
+
+content:attr(data-text);
+
+position:absolute;
+
+left:0;
+
+top:0;
+
+}
+
+.glitch::before{
+
+left:2px;
+
+color:red;
+
+clip-path:polygon(0 0,100% 0,100% 45%,0 45%);
+
+animation:glitch1 .3s infinite;
+
+}
+
+.glitch::after{
+
+left:-2px;
+
+color:cyan;
+
+clip-path:polygon(0 60%,100% 60%,100% 100%,0 100%);
+
+animation:glitch2 .3s infinite;
+
+}
+
+@keyframes glitch1{
+
+0%{transform:translate(0);}
+
+25%{transform:translate(-2px,-1px);}
+
+50%{transform:translate(2px,1px);}
+
+75%{transform:translate(-2px,2px);}
+
+100%{transform:translate(0);}
+
+}
+
+@keyframes glitch2{
+
+0%{transform:translate(0);}
+
+25%{transform:translate(2px,-2px);}
+
+50%{transform:translate(-2px,2px);}
+
+75%{transform:translate(1px,-1px);}
+
+100%{transform:translate(0);}
+
+}
+
+/* Responsive */
+
+@media(max-width:768px){
+
+h1{
+
+font-size:2.6rem;
+
+}
+
+h2{
+
+font-size:1.4rem;
+
+}
+
+.button{
+
+width:100%;
+
+text-align:center;
+
+}
+
+}
